@@ -100,6 +100,8 @@ uint32 readRegN(uint8 addr, uint16 reg, uint8* data, uint8 cnt) {
 	err = I2C_I2CMasterSendStart(addr, I2C_I2C_WRITE_XFER_MODE, TIMEOUT);
     if (err) {
         I2C_I2CMasterSendStop(TIMEOUT);
+        Print("Error with SendStart");
+        PrintInt(err);
         return err;
     }
 	I2C_I2CMasterWriteByte(reg >> 8, TIMEOUT);
@@ -109,6 +111,8 @@ uint32 readRegN(uint8 addr, uint16 reg, uint8* data, uint8 cnt) {
 	err = I2C_I2CMasterSendRestart(addr, I2C_I2C_READ_XFER_MODE, TIMEOUT);
     if (err) {
         I2C_I2CMasterSendStop(TIMEOUT);
+        Print("Error with SendRestart");
+        PrintInt(err);
         return err;
     }
     for (int i = 0; i < cnt-1; i++)

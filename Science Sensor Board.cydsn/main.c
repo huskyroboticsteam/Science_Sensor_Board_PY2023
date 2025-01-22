@@ -16,9 +16,7 @@
 #include <stdio.h>
 #include "main.h"
 #include "cyapicallbacks.h"
-#include "CAN_Stuff.h"
 #include "Sensor_Stuff.h"
-#include "./HindsightCAN/CANLibrary.h"
 
 // LED stuff
 volatile uint8_t CAN_time_LED = 0;
@@ -27,26 +25,12 @@ volatile uint8_t ERROR_time_LED = 0;
 // UART stuff
 char txData[TX_DATA_SIZE];
 
-// CAN stuff
-CANPacket can_recieve;
-CANPacket can_send;
-uint8 address = 0;
-
-CY_ISR(Period_Reset_Handler) {
-    CAN_time_LED++;
-    ERROR_time_LED++;
-
-    if (ERROR_time_LED >= 3) {
-        LED_ERR_Write(OFF);
-    }
-    if (CAN_time_LED >= 3) {
-        LED_CAN_Write(OFF);
-    }
-}
-
 int main(void)
 { 
     Initialize();
+   
+    sprintf(txData, "\r\nHello2\r\n");
+    Print(txData);
     
     int err;
     
@@ -56,23 +40,22 @@ int main(void)
     // PrintInt(temp);
     // Print("\r\n");
     
+    
     for(;;)
     {
+        
         err = 0;
         
-        if (!PollAndReceiveCANPacket(&can_recieve)) {
-            LED_CAN_Write(ON);
-            CAN_time_LED = 0;
-            err = ProcessCAN(&can_recieve, &can_send);
-        }
-        
-        if (err) DisplayErrorCode(err);
+        err = ReadSensorCO2();
+      
+        //if (err) DisplayErrorCode(err);
         
         if (DBG_UART_SpiUartGetRxBufferSize()) {
             DebugPrint(DBG_UART_UartGetByte());
         }
         
-        CyDelay(10);
+        CyDelay(1000);
+        
     }
 }
 
@@ -83,18 +66,13 @@ void Initialize(void) {
     sprintf(txData, "\r\nHello\r\n");
     Print(txData);
     
-    address = 0; // TODO replace with science sensor address
+    //address = 0; // TODO replace with science sensor address
     
     DBG_UART_Start();
     I2C_Start();
-    InitCAN(DEVICE_GROUP_SCIENCE, (int) address);
-    Timer_Period_Reset_Start();
-    isr_Period_Reset_StartEx(Period_Reset_Handler);
     
-    sprintf(txData, "Address: %x \r\n", address);
-    Print(txData);
-    
-    LED_DBG_Write(0);
+    //sprintf(txData, "Address: %x \r\n", address);
+    //Print(txData);
     
     CyDelay(30); // ensure sensors are initialized
     err = initializeSensors();
@@ -139,7 +117,7 @@ void DebugPrint(char input) {
     Print(txData);
     Print("\r\n");
 }
-
+/*
 void DisplayErrorCode(uint8_t code) {    
     ERROR_time_LED = 0;
     LED_ERR_Write(ON);
@@ -157,5 +135,6 @@ void DisplayErrorCode(uint8_t code) {
             break;
     }
 }
+*/
 
 /* [] END OF FILE */
