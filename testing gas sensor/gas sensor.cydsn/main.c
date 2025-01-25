@@ -10,6 +10,7 @@ int main(void)
     
     
     UART_Start(); // Start UART (make sure uart_rx is P7[0] and uart_tx P7[1] for pins)
+    //Uart baud should be 115200 and match in putty (also change oversampling to 12)
     ADC_Start();  // Start Analog to digital conversion
     ADC_StartConvert(); // Start ADC conversion
     for(;;) //run forever
