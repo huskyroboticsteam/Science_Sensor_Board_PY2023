@@ -1,6 +1,8 @@
-#include "project.h"
+#include <project.h>
 #include <stdio.h>
 #include <string.h>
+#include "libraryCopied.h"
+#include "cyapicallbacks.h"
 
 #define GET_KEY_REGISTER       0x01  // Define appropriate register values
 #define USER_SET_REGISTER      0x02
@@ -9,12 +11,6 @@
 
 #define COLLECT_MAX            10    // Maximum number of data points for averaging
 
-typedef struct {
-    uint8_t _addr;
-    float _Key;
-    float oxygenData[COLLECT_MAX];
-} DFRobot_OxygenSensor;
-
 /**
  * Initialize the oxygen sensor by checking the I2C connection.
  */
@@ -22,30 +18,43 @@ bool OxygenSensor_Begin(DFRobot_OxygenSensor* sensor, uint8_t addr) {
     uint8_t status = 0;
     sensor->_addr = addr;
     
+    I2C_I2CMasterClearStatus();
     // Check the I2C connection
-    status = I2C_MasterSendStart(addr, I2C_WRITE_XFER_MODE);
-    I2C_MasterSendStop();
+    status = I2C_I2CMasterSendStart(addr, I2C_I2C_WRITE_XFER_MODE, TIMEOUT);
+    if (status) {
+        I2C_I2CMasterSendStop(TIMEOUT);
+        return status;
+    }
 
-    return (status == I2C_MSTR_NO_ERROR);
+    return (status == I2C_I2C_MSTR_NO_ERROR);
 }
 
 /**
  * Read the calibration key from the sensor's memory.
  */
 void OxygenSensor_ReadFlash(DFRobot_OxygenSensor* sensor) {
-    uint8_t value = 0;
+    uint8 value = 0;
+    uint32 err;
+    I2C_I2CMasterClearStatus();
 
     // Send GET_KEY_REGISTER command
-    I2C_MasterSendStart(sensor->_addr, I2C_WRITE_XFER_MODE);
-    I2C_MasterWriteByte(GET_KEY_REGISTER);
-    I2C_MasterSendStop();
-
-    CyDelay(50);
-
-    // Request 1 byte of data
-    I2C_MasterSendStart(sensor->_addr, I2C_READ_XFER_MODE);
-    value = I2C_MasterReadByte(I2C_NAK_DATA);
-    I2C_MasterSendStop();
+    err = I2C_I2CMasterSendStart(sensor->_addr, I2C_I2C_WRITE_XFER_MODE, TIMEOUT);
+    
+    if (err) {
+        I2C_I2CMasterSendStop(TIMEOUT);
+        return;
+    }
+    
+    I2C_I2CMasterWriteByte(GET_KEY_REGISTER, TIMEOUT);
+    
+    err = I2C_I2CMasterSendRestart(sensor->_addr, I2C_I2C_READ_XFER_MODE, TIMEOUT);
+    if (err) {
+        I2C_I2CMasterSendStop(TIMEOUT);
+        return;
+    }
+    
+    I2C_I2CMasterReadByte(I2C_I2C_NAK_DATA, &value, TIMEOUT);
+    I2C_I2CMasterSendStop(TIMEOUT);
 
     if (value == 0) {
         sensor->_Key = 20.9 / 120.0;
@@ -58,10 +67,16 @@ void OxygenSensor_ReadFlash(DFRobot_OxygenSensor* sensor) {
  * Write a value to a specific register on the sensor.
  */
 void OxygenSensor_I2CWrite(DFRobot_OxygenSensor* sensor, uint8_t reg, uint8_t data) {
-    I2C_MasterSendStart(sensor->_addr, I2C_WRITE_XFER_MODE);
-    I2C_MasterWriteByte(reg);
-    I2C_MasterWriteByte(data);
-    I2C_MasterSendStop();
+    uint32 err;
+    I2C_I2CMasterClearStatus();
+    err = I2C_I2CMasterSendStart(sensor->_addr, I2C_I2C_WRITE_XFER_MODE, TIMEOUT);
+    if (err) {
+        I2C_I2CMasterSendStop(TIMEOUT);
+        return;
+    }
+    I2C_I2CMasterWriteByte(reg, TIMEOUT);
+    I2C_I2CMasterWriteByte(data, TIMEOUT);
+    I2C_I2CMasterSendStop(TIMEOUT);
 }
 
 /**
@@ -83,7 +98,7 @@ void OxygenSensor_Calibrate(DFRobot_OxygenSensor* sensor, float vol, float mv) {
  * Get the oxygen concentration from the sensor.
  */
 float OxygenSensor_GetOxygenData(DFRobot_OxygenSensor* sensor, uint8_t collectNum) {
-    uint8_t rxbuf[3] = {0};
+    uint8 rxbuf[3] = {0};
     uint8_t i = 0;
     static uint8_t collected = 0;
 
@@ -94,8 +109,44 @@ float OxygenSensor_GetOxygenData(DFRobot_OxygenSensor* sensor, uint8_t collectNu
     for (i = collectNum - 1; i > 0; i--) {
         sensor->oxygenData[i] = sensor->oxygenData[i - 1];
     }
-
+    
+    uint32 err;
     // Send OXYGEN_DATA_REGISTER command
-    I2C_MasterSendStart(sensor->_addr, I2C_WRITE_XFER_MODE);
-    I2C_MasterWriteByte(OXYGEN_DATA_REGISTER);
-... (30 lines left)
+    I2C_I2CMasterClearStatus();
+    err = I2C_I2CMasterSendStart(sensor->_addr, I2C_I2C_WRITE_XFER_MODE, TIMEOUT);
+    if (err) {
+        I2C_I2CMasterSendStop(TIMEOUT);
+        return err;
+    }
+    I2C_I2CMasterWriteByte(OXYGEN_DATA_REGISTER, TIMEOUT);
+    
+    err = I2C_I2CMasterSendRestart(sensor->_addr, I2C_I2C_READ_XFER_MODE, TIMEOUT);
+    if (err) {
+        I2C_I2CMasterSendStop(TIMEOUT);
+        return err;
+    }
+    // Request 3 bytes of oxygen data
+    for (i = 0; i < 3; i++) {
+       I2C_I2CMasterReadByte((i < 2) ? I2C_I2C_ACK_DATA : I2C_I2C_NAK_DATA, rxbuf[i], TIMEOUT);
+    }
+    I2C_I2CMasterSendStop(TIMEOUT);
+
+    sensor->oxygenData[0] = (sensor->_Key) * ((float)rxbuf[0] + ((float)rxbuf[1] / 10.0) + ((float)rxbuf[2] / 100.0));
+    if (collected < collectNum) collected++;
+    
+    return OxygenSensor_GetAverage(sensor->oxygenData, collected);
+}
+
+/**
+ * Calculate the average of collected data points.
+ */
+float OxygenSensor_GetAverage(float data[], uint8_t len) {
+    uint8_t i = 0;
+    float sum = 0.0;
+
+    for (i = 0; i < len; i++) {
+        sum += data[i];
+    }
+
+    return sum / (float)len;
+}

@@ -1,4 +1,5 @@
-#include "project.h"
+#include <project.h>
+#include <stdio.h>
 #include "libraryCopied.h"
 
 #define Oxygen_IICAddress 0x70   // Replace with your sensor's I2C address

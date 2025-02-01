@@ -1,0 +1,6 @@
+C:\Users\shahnaz\Documents\GitHub\Science_Sensor_Board\testing_sensors\oxygen testing\oxygen.cydsn\oxygen.cyprj|d62e8f5c-6f2d-491d-bbb1-b5b59418386c
+C:\Users\shahnaz\Desktop\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|8fa84f7f-4328-4bea-a1c8-0b14373167fc
+C:\Users\shahnaz\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|c61f22b6-0314-4905-8b7d-9a571508320e
+C:\Users\shahnaz\Desktop\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|be36275b-01cb-411c-a7ca-a29d40234413
+C:\Users\shahnaz\Desktop\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|6b49f9ea-18ad-477b-a880-92a85f8bceff
+C:\Users\shahnaz\Desktop\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|c6c50667-9b6f-45ee-9039-adaa39db58f1
