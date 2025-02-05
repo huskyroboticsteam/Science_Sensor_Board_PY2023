@@ -16,27 +16,28 @@
 ##################################################################### 
                     1::Clock Frequency Summary
 ===================================================================== 
-Number of clocks: 20
-Clock: ADC_intClock             | N/A  | Target: 1.00 MHz   | 
-Clock: ADC_intClock(FFB)        | N/A  | Target: 1.00 MHz   | 
-Clock: CapSense_SampleClk       | N/A  | Target: 0.19 MHz   | 
-Clock: CapSense_SampleClk(FFB)  | N/A  | Target: 0.19 MHz   | 
-Clock: CapSense_SenseClk        | N/A  | Target: 0.19 MHz   | 
-Clock: CapSense_SenseClk(FFB)   | N/A  | Target: 0.19 MHz   | 
-Clock: Clock_1MHz               | N/A  | Target: 1.00 MHz   | 
-Clock: Clock_1MHz(FFB)          | N/A  | Target: 1.00 MHz   | 
-Clock: CyHFClk                  | N/A  | Target: 48.00 MHz  | 
-Clock: CyILO                    | N/A  | Target: 0.03 MHz   | 
-Clock: CyIMO                    | N/A  | Target: 48.00 MHz  | 
-Clock: CyLFClk                  | N/A  | Target: 0.03 MHz   | 
-Clock: CyRouted1                | N/A  | Target: 48.00 MHz  | 
-Clock: CySysClk                 | N/A  | Target: 48.00 MHz  | 
-Clock: I2C_SCBCLK               | N/A  | Target: 1.60 MHz   | 
-Clock: I2C_SCBCLK(FFB)          | N/A  | Target: 1.60 MHz   | 
-Clock: SPI_SCBCLK               | N/A  | Target: 16.00 MHz  | 
-Clock: SPI_SCBCLK(FFB)          | N/A  | Target: 16.00 MHz  | 
-Clock: UART_SCBCLK              | N/A  | Target: 1.37 MHz   | 
-Clock: UART_SCBCLK(FFB)         | N/A  | Target: 1.37 MHz   | 
+Number of clocks: 21
+Clock: ADC_intClock             | N/A  | Target: 1.00 MHz    | 
+Clock: ADC_intClock(FFB)        | N/A  | Target: 1.00 MHz    | 
+Clock: CapSense_SampleClk       | N/A  | Target: 0.19 MHz    | 
+Clock: CapSense_SampleClk(FFB)  | N/A  | Target: 0.19 MHz    | 
+Clock: CapSense_SenseClk        | N/A  | Target: 0.19 MHz    | 
+Clock: CapSense_SenseClk(FFB)   | N/A  | Target: 0.19 MHz    | 
+Clock: ClockBlock/ff_div_5      | N/A  | Target: 100.00 MHz  | 
+Clock: Clock_1MHz               | N/A  | Target: 1.00 MHz    | 
+Clock: Clock_1MHz(FFB)          | N/A  | Target: 1.00 MHz    | 
+Clock: CyHFClk                  | N/A  | Target: 48.00 MHz   | 
+Clock: CyILO                    | N/A  | Target: 0.03 MHz    | 
+Clock: CyIMO                    | N/A  | Target: 48.00 MHz   | 
+Clock: CyLFClk                  | N/A  | Target: 0.03 MHz    | 
+Clock: CyRouted1                | N/A  | Target: 48.00 MHz   | 
+Clock: CySysClk                 | N/A  | Target: 48.00 MHz   | 
+Clock: I2C_SCBCLK               | N/A  | Target: 1.60 MHz    | 
+Clock: I2C_SCBCLK(FFB)          | N/A  | Target: 1.60 MHz    | 
+Clock: SPI_SCBCLK               | N/A  | Target: 16.00 MHz   | 
+Clock: SPI_SCBCLK(FFB)          | N/A  | Target: 16.00 MHz   | 
+Clock: UART_SCBCLK              | N/A  | Target: 1.37 MHz    | 
+Clock: UART_SCBCLK(FFB)         | N/A  | Target: 1.37 MHz    | 
 
  =====================================================================
                     End of Clock Frequency Summary
@@ -72,8 +73,8 @@ Port Name  Setup to Clk  Clock Name:Phase
 
 Port Name         Clock to Out  Clock Name:Phase   
 ----------------  ------------  -----------------  
-PWM_0_Out(0)_PAD  18710         Clock_1MHz(FFB):R  
-PWM_1_Out(0)_PAD  16910         Clock_1MHz(FFB):R  
+PWM_0_Out(0)_PAD  16910         Clock_1MHz(FFB):R  
+PWM_1_Out(0)_PAD  15090         Clock_1MHz(FFB):R  
 PWM_2_Out(0)_PAD  16330         Clock_1MHz(FFB):R  
 
 

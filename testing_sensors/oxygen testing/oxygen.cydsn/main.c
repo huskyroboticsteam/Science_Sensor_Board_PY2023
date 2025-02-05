@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "libraryCopied.h"
 
-#define Oxygen_IICAddress 0x70   // Replace with your sensor's I2C address
+#define Oxygen_IICAddress 0x73   // Replace with your sensor's I2C address
 
 DFRobot_OxygenSensor oxygenSensor;
 
@@ -11,6 +11,8 @@ int main(void) {
 
     UART_Start();
     I2C_Start();
+    
+    
 
     UART_UartPutString("Initializing Oxygen Sensor...\r\n");
 

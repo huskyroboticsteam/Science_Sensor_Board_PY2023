@@ -1,5 +1,5 @@
 -- Project:   oxygen
--- Generated: 01/29/2025 00:57:37
+-- Generated: 02/04/2025 17:49:53
 -- PSoC Creator  4.4
 
 ENTITY oxygen IS
@@ -201,17 +201,17 @@ ARCHITECTURE __DEFAULT__ OF oxygen IS
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     ATTRIBUTE Location OF ClockGenBlock : LABEL IS "F(CLK_GEN,0)";
     ATTRIBUTE lib_model OF ADC_1P(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF ADC_1P(0) : LABEL IS "P2[0]";
+    ATTRIBUTE Location OF ADC_1P(0) : LABEL IS "P2[6]";
     ATTRIBUTE lib_model OF ADC_0(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF ADC_0(0) : LABEL IS "P2[3]";
+    ATTRIBUTE Location OF ADC_0(0) : LABEL IS "P2[0]";
     ATTRIBUTE lib_model OF \CapSense:Cmod(0)\ : LABEL IS "iocell3";
     ATTRIBUTE Location OF \CapSense:Cmod(0)\ : LABEL IS "P4[2]";
     ATTRIBUTE lib_model OF \CapSense:Sns(0)\ : LABEL IS "iocell4";
-    ATTRIBUTE Location OF \CapSense:Sns(0)\ : LABEL IS "P4[6]";
+    ATTRIBUTE Location OF \CapSense:Sns(0)\ : LABEL IS "P6[4]";
     ATTRIBUTE lib_model OF \CapSense:Sns(1)\ : LABEL IS "iocell5";
-    ATTRIBUTE Location OF \CapSense:Sns(1)\ : LABEL IS "P6[0]";
+    ATTRIBUTE Location OF \CapSense:Sns(1)\ : LABEL IS "P4[4]";
     ATTRIBUTE lib_model OF ADC_1M(0) : LABEL IS "iocell6";
-    ATTRIBUTE Location OF ADC_1M(0) : LABEL IS "P2[1]";
+    ATTRIBUTE Location OF ADC_1M(0) : LABEL IS "P2[7]";
     ATTRIBUTE lib_model OF ADC_2(0) : LABEL IS "iocell7";
     ATTRIBUTE Location OF ADC_2(0) : LABEL IS "P1[5]";
     ATTRIBUTE lib_model OF ADC_3(0) : LABEL IS "iocell8";
@@ -238,9 +238,13 @@ ARCHITECTURE __DEFAULT__ OF oxygen IS
     ATTRIBUTE lib_model OF PWM_1_Out(0) : LABEL IS "iocell24";
     ATTRIBUTE lib_model OF PWM_2_Out(0) : LABEL IS "iocell25";
     ATTRIBUTE lib_model OF \UART:tx(0)\ : LABEL IS "iocell26";
+    ATTRIBUTE Location OF \UART:tx(0)\ : LABEL IS "P7[1]";
     ATTRIBUTE lib_model OF \UART:rx(0)\ : LABEL IS "iocell27";
+    ATTRIBUTE Location OF \UART:rx(0)\ : LABEL IS "P7[0]";
     ATTRIBUTE lib_model OF \I2C:sda(0)\ : LABEL IS "iocell28";
+    ATTRIBUTE Location OF \I2C:sda(0)\ : LABEL IS "P4[1]";
     ATTRIBUTE lib_model OF \I2C:scl(0)\ : LABEL IS "iocell29";
+    ATTRIBUTE Location OF \I2C:scl(0)\ : LABEL IS "P4[0]";
     ATTRIBUTE Location OF \CapSense:CSD_FFB\ : LABEL IS "F(CSD,0)";
     ATTRIBUTE Location OF \CapSense:IDAC2:cy_psoc4_idac\ : LABEL IS "F(CSIDAC7,0)";
     ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell1";

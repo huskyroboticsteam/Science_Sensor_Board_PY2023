@@ -17,10 +17,10 @@
 #include "I2C.h"
 
 // Constants
-#define GET_KEY_REGISTER       0x01  // Register for reading the key value
-#define USER_SET_REGISTER      0x02  // Register for user calibration
-#define AUTUAL_SET_REGISTER    0x03  // Register for automatic calibration
-#define OXYGEN_DATA_REGISTER   0x04  // Register for reading oxygen data
+#define GET_KEY_REGISTER       0x0A  // Register for reading the key value
+#define USER_SET_REGISTER      0x08  // Register for user calibration
+#define AUTUAL_SET_REGISTER    0x09  // Register for automatic calibration
+#define OXYGEN_DATA_REGISTER   0x03  // Register for reading oxygen data
 #define COLLECT_MAX            10    // Maximum number of data points for averaging
 #define TIMEOUT 20
 

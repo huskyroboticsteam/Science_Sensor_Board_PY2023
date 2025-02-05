@@ -1,5 +1,5 @@
 -- Project:   oxygen
--- Generated: 01/29/2025 00:57:37
+-- Generated: 02/04/2025 17:49:55
 -- PSoC Creator  4.4
 
 ENTITY oxygen IS
@@ -203,17 +203,17 @@ ARCHITECTURE __DEFAULT__ OF oxygen IS
     ATTRIBUTE Location OF ClockGenBlock : LABEL IS "F(CLK_GEN,0)";
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF ADC_1P(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF ADC_1P(0) : LABEL IS "P2[0]";
+    ATTRIBUTE Location OF ADC_1P(0) : LABEL IS "P2[6]";
     ATTRIBUTE lib_model OF ADC_0(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF ADC_0(0) : LABEL IS "P2[3]";
+    ATTRIBUTE Location OF ADC_0(0) : LABEL IS "P2[0]";
     ATTRIBUTE lib_model OF \CapSense:Cmod(0)\ : LABEL IS "iocell3";
     ATTRIBUTE Location OF \CapSense:Cmod(0)\ : LABEL IS "P4[2]";
     ATTRIBUTE lib_model OF \CapSense:Sns(0)\ : LABEL IS "iocell4";
-    ATTRIBUTE Location OF \CapSense:Sns(0)\ : LABEL IS "P4[6]";
+    ATTRIBUTE Location OF \CapSense:Sns(0)\ : LABEL IS "P6[4]";
     ATTRIBUTE lib_model OF \CapSense:Sns(1)\ : LABEL IS "iocell5";
-    ATTRIBUTE Location OF \CapSense:Sns(1)\ : LABEL IS "P6[0]";
+    ATTRIBUTE Location OF \CapSense:Sns(1)\ : LABEL IS "P4[4]";
     ATTRIBUTE lib_model OF ADC_1M(0) : LABEL IS "iocell6";
-    ATTRIBUTE Location OF ADC_1M(0) : LABEL IS "P2[1]";
+    ATTRIBUTE Location OF ADC_1M(0) : LABEL IS "P2[7]";
     ATTRIBUTE lib_model OF ADC_2(0) : LABEL IS "iocell7";
     ATTRIBUTE Location OF ADC_2(0) : LABEL IS "P1[5]";
     ATTRIBUTE lib_model OF ADC_3(0) : LABEL IS "iocell8";
@@ -238,29 +238,29 @@ ARCHITECTURE __DEFAULT__ OF oxygen IS
     ATTRIBUTE lib_model OF \SPI:mosi_s(0)\ : LABEL IS "iocell17";
     ATTRIBUTE Location OF \SPI:mosi_s(0)\ : LABEL IS "P0[4]";
     ATTRIBUTE lib_model OF Output_Pin_0(0) : LABEL IS "iocell18";
-    ATTRIBUTE Location OF Output_Pin_0(0) : LABEL IS "P1[3]";
+    ATTRIBUTE Location OF Output_Pin_0(0) : LABEL IS "P1[4]";
     ATTRIBUTE lib_model OF Output_Pin_1(0) : LABEL IS "iocell19";
     ATTRIBUTE Location OF Output_Pin_1(0) : LABEL IS "P1[6]";
     ATTRIBUTE Location OF Input_Pin_0 : LABEL IS "F(PICU,2)";
     ATTRIBUTE lib_model OF Input_Pin_0(0) : LABEL IS "iocell20";
-    ATTRIBUTE Location OF Input_Pin_0(0) : LABEL IS "P2[2]";
+    ATTRIBUTE Location OF Input_Pin_0(0) : LABEL IS "P2[1]";
     ATTRIBUTE Location OF Input_Pin_1 : LABEL IS "F(PICU,1)";
     ATTRIBUTE lib_model OF Input_Pin_1(0) : LABEL IS "iocell21";
-    ATTRIBUTE Location OF Input_Pin_1(0) : LABEL IS "P1[2]";
+    ATTRIBUTE Location OF Input_Pin_1(0) : LABEL IS "P1[3]";
     ATTRIBUTE lib_model OF Timer_Pin(0) : LABEL IS "iocell22";
-    ATTRIBUTE Location OF Timer_Pin(0) : LABEL IS "P1[4]";
+    ATTRIBUTE Location OF Timer_Pin(0) : LABEL IS "P1[1]";
     ATTRIBUTE lib_model OF PWM_0_Out(0) : LABEL IS "iocell23";
-    ATTRIBUTE Location OF PWM_0_Out(0) : LABEL IS "P2[6]";
+    ATTRIBUTE Location OF PWM_0_Out(0) : LABEL IS "P3[4]";
     ATTRIBUTE lib_model OF PWM_1_Out(0) : LABEL IS "iocell24";
-    ATTRIBUTE Location OF PWM_1_Out(0) : LABEL IS "P3[4]";
+    ATTRIBUTE Location OF PWM_1_Out(0) : LABEL IS "P1[2]";
     ATTRIBUTE lib_model OF PWM_2_Out(0) : LABEL IS "iocell25";
     ATTRIBUTE Location OF PWM_2_Out(0) : LABEL IS "P2[4]";
     ATTRIBUTE lib_model OF \UART:tx(0)\ : LABEL IS "iocell26";
-    ATTRIBUTE Location OF \UART:tx(0)\ : LABEL IS "P5[1]";
+    ATTRIBUTE Location OF \UART:tx(0)\ : LABEL IS "P7[1]";
     ATTRIBUTE lib_model OF \UART:rx(0)\ : LABEL IS "iocell27";
-    ATTRIBUTE Location OF \UART:rx(0)\ : LABEL IS "P5[0]";
+    ATTRIBUTE Location OF \UART:rx(0)\ : LABEL IS "P7[0]";
     ATTRIBUTE lib_model OF \I2C:sda(0)\ : LABEL IS "iocell28";
-    ATTRIBUTE Location OF \I2C:sda(0)\ : LABEL IS "P1[1]";
+    ATTRIBUTE Location OF \I2C:sda(0)\ : LABEL IS "P4[1]";
     ATTRIBUTE lib_model OF \I2C:scl(0)\ : LABEL IS "iocell29";
     ATTRIBUTE Location OF \I2C:scl(0)\ : LABEL IS "P4[0]";
     ATTRIBUTE Location OF \CapSense:CSD_FFB\ : LABEL IS "F(CSD,0)";
@@ -282,13 +282,13 @@ ARCHITECTURE __DEFAULT__ OF oxygen IS
     ATTRIBUTE Location OF \SPI:SCB\ : LABEL IS "F(SCB,1)";
     ATTRIBUTE Location OF Input_0_Int : LABEL IS "[IntrContainer=(0)][IntrId=(2)]";
     ATTRIBUTE Location OF Input_1_Int : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
-    ATTRIBUTE Location OF Timer_Int : LABEL IS "[IntrContainer=(0)][IntrId=(22)]";
-    ATTRIBUTE Location OF PWM_0_Int : LABEL IS "[IntrContainer=(0)][IntrId=(20)]";
-    ATTRIBUTE Location OF \Timer:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,3)";
+    ATTRIBUTE Location OF Timer_Int : LABEL IS "[IntrContainer=(0)][IntrId=(20)]";
+    ATTRIBUTE Location OF PWM_0_Int : LABEL IS "[IntrContainer=(0)][IntrId=(21)]";
+    ATTRIBUTE Location OF \Timer:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,1)";
     ATTRIBUTE Location OF \PWM_2:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,0)";
-    ATTRIBUTE Location OF \PWM_1:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,2)";
-    ATTRIBUTE Location OF \PWM_0:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,1)";
-    ATTRIBUTE Location OF \UART:SCB\ : LABEL IS "F(SCB,2)";
+    ATTRIBUTE Location OF \PWM_1:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,3)";
+    ATTRIBUTE Location OF \PWM_0:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,2)";
+    ATTRIBUTE Location OF \UART:SCB\ : LABEL IS "F(SCB,3)";
     ATTRIBUTE Location OF \I2C:SCB_IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(8)]";
     ATTRIBUTE Location OF \I2C:SCB\ : LABEL IS "F(SCB,0)";
     ATTRIBUTE Location OF LPCOMP_INT : LABEL IS "F(LPCOMPBLOCK,0)";
@@ -641,12 +641,13 @@ BEGIN
             ff_div_6 => \CapSense:Net_429_ff6\,
             ff_div_2 => \I2C:Net_847_ff3\,
             ff_div_3 => \SPI:Net_847_ff2\,
-            ff_div_4 => \UART:Net_847_ff4\,
+            ff_div_4 => open,
             ff_div_11 => Net_4214_ff13,
-            ff_div_12 => Net_4214_ff11,
-            ff_div_13 => Net_4214_ff12,
-            ff_div_14 => Net_4214_ff14,
-            ff_div_10 => \ADC:Net_1845_ff10\);
+            ff_div_12 => Net_4214_ff14,
+            ff_div_13 => Net_4214_ff11,
+            ff_div_14 => Net_4214_ff12,
+            ff_div_10 => \ADC:Net_1845_ff10\,
+            ff_div_5 => \UART:Net_847_ff4\);
 
     ADC_1P:logicalport
         GENERIC MAP(

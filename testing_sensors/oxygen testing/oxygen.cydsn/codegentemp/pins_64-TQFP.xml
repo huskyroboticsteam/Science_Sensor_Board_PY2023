@@ -66,7 +66,7 @@
       </pad>
     </pin>
     <pin number="3" name="P2[1]">
-      <pad name="P2[1]" number="44" type="GPIO" portId="2" pinId="1" ioSupplyPin="VDDIO_A" capabilities="0x000000D000000013">
+      <pad name="P2[1]" number="44" type="GPIO" portId="2" pinId="1" ioSupplyPin="VDDIO_A" capabilities="0x000000D000000017">
         <ffbterm ffbtype="TCPWM" ffbid="4" term="line_compl" alternative="1" />
         <ffbterm ffbtype="LCD" ffbid="0" term="com" wire="17" />
         <ffbterm ffbtype="LCD" ffbid="0" term="seg" wire="17" />
@@ -89,7 +89,7 @@
       </pad>
     </pin>
     <pin number="5" name="P2[3]">
-      <pad name="P2[3]" number="46" type="GPIO" portId="2" pinId="3" ioSupplyPin="VDDIO_A" capabilities="0x000000D000000013">
+      <pad name="P2[3]" number="46" type="GPIO" portId="2" pinId="3" ioSupplyPin="VDDIO_A" capabilities="0x000000D000000017">
         <ffbterm ffbtype="TCPWM" ffbid="5" term="line_compl" alternative="1" />
         <ffbterm ffbtype="LCD" ffbid="0" term="com" wire="19" />
         <ffbterm ffbtype="LCD" ffbid="0" term="seg" wire="19" />
@@ -129,7 +129,7 @@
       </pad>
     </pin>
     <pin number="8" name="P2[6]">
-      <pad name="P2[6]" number="49" type="GPIO" portId="2" pinId="6" ioSupplyPin="VDDIO_A" capabilities="0x000000D000000017">
+      <pad name="P2[6]" number="49" type="GPIO" portId="2" pinId="6" ioSupplyPin="VDDIO_A" capabilities="0x000000D000000013">
         <ffbterm ffbtype="TCPWM" ffbid="1" term="line" alternative="1" />
         <ffbterm ffbtype="LCD" ffbid="0" term="com" wire="22" />
         <ffbterm ffbtype="LCD" ffbid="0" term="seg" wire="22" />
@@ -142,7 +142,7 @@
       </pad>
     </pin>
     <pin number="9" name="P2[7]">
-      <pad name="P2[7]" number="50" type="GPIO" portId="2" pinId="7" ioSupplyPin="VDDIO_A" capabilities="0x000000D000000017">
+      <pad name="P2[7]" number="50" type="GPIO" portId="2" pinId="7" ioSupplyPin="VDDIO_A" capabilities="0x000000D000000013">
         <ffbterm ffbtype="TCPWM" ffbid="1" term="line_compl" alternative="1" />
         <ffbterm ffbtype="LCD" ffbid="0" term="com" wire="23" />
         <ffbterm ffbtype="LCD" ffbid="0" term="seg" wire="23" />
