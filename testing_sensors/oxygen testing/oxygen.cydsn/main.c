@@ -6,6 +6,10 @@
 
 DFRobot_OxygenSensor oxygenSensor;
 
+/*
+Make sure to configure PSoC Creator settings to print floats 
+*/
+
 int main(void) {
     CyGlobalIntEnable;
 

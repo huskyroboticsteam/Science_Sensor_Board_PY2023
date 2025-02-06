@@ -4,10 +4,10 @@
 #include "libraryCopied.h"
 #include "cyapicallbacks.h"
 
-#define GET_KEY_REGISTER       0x01  // Define appropriate register values
-#define USER_SET_REGISTER      0x02
-#define AUTUAL_SET_REGISTER    0x03
-#define OXYGEN_DATA_REGISTER   0x04
+#define GET_KEY_REGISTER       0x0A  // Define appropriate register values
+#define USER_SET_REGISTER      0x08
+#define AUTUAL_SET_REGISTER    0x09
+#define OXYGEN_DATA_REGISTER   0x03
 
 #define COLLECT_MAX            10    // Maximum number of data points for averaging
 
@@ -68,10 +68,11 @@ void OxygenSensor_ReadFlash(DFRobot_OxygenSensor* sensor) {
     I2C_I2CMasterSendStop(TIMEOUT);
 
     if (value == 0) {
-        sensor->_Key = 20.9 / 120.0;
+        sensor->_Key =  20.9 / 120.0;
     } else {
-        sensor->_Key = (float)value / 1000.0;
+        sensor->_Key = value / 1000.0;
     }
+    
 }
 
 /**
@@ -133,7 +134,7 @@ float OxygenSensor_GetOxygenData(DFRobot_OxygenSensor* sensor, uint8_t collectNu
         return err;
     }
     I2C_I2CMasterWriteByte(OXYGEN_DATA_REGISTER, TIMEOUT);
-    UART_UartPutString("getdata write completed");
+  
     err = I2C_I2CMasterSendRestart(sensor->_addr, I2C_I2C_READ_XFER_MODE, TIMEOUT);
     if (err) {
         I2C_I2CMasterSendStop(TIMEOUT);
@@ -143,13 +144,7 @@ float OxygenSensor_GetOxygenData(DFRobot_OxygenSensor* sensor, uint8_t collectNu
     
     // Request 3 bytes of oxygen data
     for (i = 0; i < 3; i++) {
-        if(rxbuf[i] == 0){
-       UART_UartPutString("Oxygen Data: rxbuf is 0 before read \r\n");
-        }
        I2C_I2CMasterReadByte((i < 2) ? I2C_I2C_ACK_DATA : I2C_I2C_NAK_DATA, &rxbuf[i], TIMEOUT);
-        if(rxbuf[i] == 0){
-       UART_UartPutString("Oxygen Data: rxbuf is 0 after read \r\n");
-        }
     }
     
     
@@ -157,8 +152,8 @@ float OxygenSensor_GetOxygenData(DFRobot_OxygenSensor* sensor, uint8_t collectNu
     I2C_I2CMasterSendStop(TIMEOUT);
 
     sensor->oxygenData[0] = (sensor->_Key) * ((float)rxbuf[0] + ((float)rxbuf[1] / 10.0) + ((float)rxbuf[2] / 100.0));
+   
     if (collected < collectNum) collected++;
-    
     return OxygenSensor_GetAverage(sensor->oxygenData, collected);
 }
 
